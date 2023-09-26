@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Error} from "./pages/Error.tsx";
 import {App} from "./pages/App.tsx";
-import "the-new-css-reset/css/reset.css"
 import "@fortawesome/fontawesome-svg-core"
 import "@fortawesome/react-fontawesome"
-import {SignIn} from "./pages/SignIn.tsx";
+import {Login} from "./pages/Login.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,8 +14,8 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: '/sign-in',
-    element: <SignIn/>
+    path: '/login',
+    element: <Login/>
   }
 ])
 
