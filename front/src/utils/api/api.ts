@@ -13,8 +13,8 @@ export async function api(endpoint: string, token: string | null, method: 'POST'
     const response = await fetch(`http://localhost:3001/api/v1/user/${endpoint}`, {
         method: method,
         headers: {
-            'Content-Type' : 'application/json',
-            'Authorization' : token ? token : ''
+            'Content-Type': 'application/json',
+            'Authorization': token ? token : ''
         },
         body: data ? JSON.stringify(data) : ''
     })
@@ -25,8 +25,8 @@ export async function api(endpoint: string, token: string | null, method: 'POST'
 
     const responseData = await response.json()
 
-    if (response.status === 404) {
-        throw new ApiErrors(responseData)
+    if (response.status === 404 || responseData.status === 400) {
+        throw new ApiErrors(responseData.message)
     }
 
     return responseData

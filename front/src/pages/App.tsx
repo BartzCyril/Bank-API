@@ -4,19 +4,9 @@ import {Footer} from "../components/Footer.tsx";
 import {Feature} from "../components/Feature/Feature.tsx";
 import {useEffect} from "react";
 import {api} from "../utils/api/api.ts";
+import {useSelector} from "react-redux";
 
 export function App() {
-
-    const user = {
-        email: "steve@rogers.com",
-        password: "password456",
-    }
-
-    useEffect(() => {
-        api("login", null, "POST", user)
-            .then(data => console.log(data))
-            .catch(error => console.error(error));
-    }, []);
 
     return (
         <>
