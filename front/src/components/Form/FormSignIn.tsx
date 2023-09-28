@@ -40,7 +40,7 @@ export function FormSignIn() {
     }
 
     const save = (token: string) => {
-        api("profile", token, "POST", null)
+        api("profile", "POST", null, token)
             .then((data) => {dispatch(userLogIn({
                 token: token,
                 firstName: data.body.firstName,
@@ -61,7 +61,7 @@ export function FormSignIn() {
                 email: username,
                 password: password
             }
-            api("login", null, "POST", user)
+            api("login", "POST", user)
                 .then(d => save(d.body.token))
                 .catch(error => {setError(prevError => ({...prevError, global: error.errors}))})
         }

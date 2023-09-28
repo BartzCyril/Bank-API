@@ -29,7 +29,7 @@ export function EditName() {
                     firstName: firstName,
                     lastName: lastName
                 }
-                api("profile", user.token, "PUT", newData)
+                api("profile", "PUT", newData, user.token)
                     .then(handleClick)
                     .catch(error => console.log(error))
             }
