@@ -34,7 +34,7 @@ module.exports.getUserProfile = async serviceData => {
     const user = await User.findOne({ _id: decodedJwtToken.id })
 
     if (!user) {
-      throw new Error('User not found!')
+      throw new Error('Profile not found!')
     }
 
     return user.toObject()
@@ -49,7 +49,7 @@ module.exports.loginUser = async serviceData => {
     const user = await User.findOne({ email: serviceData.email })
 
     if (!user) {
-      throw new Error('User not found!')
+      throw new Error('Profile not found!')
     }
 
     const isValid = await bcrypt.compare(serviceData.password, user.password)
@@ -85,7 +85,7 @@ module.exports.updateUserProfile = async serviceData => {
     )
 
     if (!user) {
-      throw new Error('User not found!')
+      throw new Error('Profile not found!')
     }
 
     return user.toObject()

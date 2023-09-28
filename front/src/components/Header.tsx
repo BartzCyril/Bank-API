@@ -1,9 +1,10 @@
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {user, userSelector} from "../utils/type/user.ts";
 
 export function Header() {
 
-    const user = useSelector((s) => s.user)
+    const user: user = useSelector<userSelector>((u) => u.user) as user
 
     return (
         <nav className="main-nav">
@@ -18,12 +19,12 @@ export function Header() {
             <div>
                 {user.token ?
                     <div>
-                    <Link className="main-nav-item" to="/user">
+                    <Link className="main-nav-item" to="/profile">
                         <i className="fa fa-user-circle"></i>
                         {user.firstName}
                     </Link>
                     <Link className="main-nav-item" to="/logout">
-                        <i class="fa fa-sign-out"></i>
+                        <i className="fa fa-sign-out"></i>
                         Sign Out
                     </Link></div> : <Link className="main-nav-item" to="/login">
                     <i className="fa fa-user-circle"></i>

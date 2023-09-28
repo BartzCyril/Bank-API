@@ -2,9 +2,6 @@ import "../css/main.css"
 import {Header} from "../components/Header.tsx";
 import {Footer} from "../components/Footer.tsx";
 import {Feature} from "../components/Feature/Feature.tsx";
-import {useEffect} from "react";
-import {api} from "../utils/api/api.ts";
-import {useSelector} from "react-redux";
 
 export function App() {
 

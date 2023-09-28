@@ -11,4 +11,6 @@ export function Logout() {
         dispatch(userLogOut())
         navigate("/")
     }, []);
+
+    return (<></>)
 }

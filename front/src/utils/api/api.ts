@@ -8,13 +8,13 @@ export class ApiErrors {
     }
 }
 
-export async function api(endpoint: string, token: string | null, method: 'POST' | 'PUT', data: user | null) {
+export async function api(endpoint: string, token: string | undefined, method: 'POST' | 'PUT', data: user | null) {
 
     const response = await fetch(`http://localhost:3001/api/v1/user/${endpoint}`, {
         method: method,
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': token ? token : ''
+            'Authorization': token ? `Bearer ${token}` : ''
         },
         body: data ? JSON.stringify(data) : ''
     })

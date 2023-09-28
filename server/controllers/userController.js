@@ -6,7 +6,7 @@ module.exports.createUser = async (req, res) => {
   try {
     const responseFromService = await userService.createUser(req.body)
     response.status = 200
-    response.message = 'User successfully created'
+    response.message = 'Profile successfully created'
     response.body = responseFromService
   } catch (error) {
     console.error('Something went wrong in userController.js', error)
@@ -23,7 +23,7 @@ module.exports.loginUser = async (req, res) => {
   try {
     const responseFromService = await userService.loginUser(req.body)
     response.status = 200
-    response.message = 'User successfully logged in'
+    response.message = 'Profile successfully logged in'
     response.body = responseFromService
   } catch (error) {
     console.error('Error in loginUser (userController.js)')

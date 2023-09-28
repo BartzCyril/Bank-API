@@ -9,7 +9,7 @@ import {Login} from "./pages/Login.tsx";
 import {Provider} from "react-redux";
 import {store} from "./utils/slice/userSlice.ts";
 import {Logout} from "./pages/Logout.tsx";
-import {User} from "./pages/User.tsx";
+import {Profile} from "./pages/Profile.tsx";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +26,8 @@ const router = createBrowserRouter([
     element: <Logout/>
   },
   {
-    path: '/user',
-    element: <User/>
+    path: '/profile',
+    element: <Profile/>
   }
 ])
 

@@ -19,7 +19,7 @@ const userSlice = createSlice({
         changeFirstName: (state: stateStore, action) => {state.firstName = action.payload},
         changeLastName: (state: stateStore, action) => {state.lastName = action.payload},
         userLogOut: () => {return  initialState},
-        userLogIn: (state: stateStore, action) => {return action.payload},
+        userLogIn: (_state: stateStore, action) => {return action.payload},
     }
 })
 

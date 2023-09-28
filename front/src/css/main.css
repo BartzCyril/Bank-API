@@ -256,6 +256,43 @@ body {
   flex: 1;
 }
 
+.profile {
+  padding: 2rem 0 5rem 0;
+}
+
+.save-button {
+  border-color: #00bc77;
+  background-color: #fff;
+  color: #00bc77;
+  font-weight: bold;
+  width: 100px;
+  height: 30px;
+}
+
+.editName-container-input {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.editName-container-input input {
+  width: 170px;
+  height: 35px;
+  font-size: 1.2rem;
+  color: rgb(191, 200, 211);
+  font-weight: 500;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border-color: #00bc77;
+}
+
+.editName-container-button {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  justify-content: center;
+}
+
 .edit-button {
   border-color: #00bc77;
   background-color: #00bc77;

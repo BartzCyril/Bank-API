@@ -3,13 +3,11 @@ import {Checkbox} from "./Checkbox.tsx";
 import {useState} from "react";
 import {Error} from "./Error.tsx";
 import {api} from "../../utils/api/api.ts";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {userLogIn} from "../../utils/slice/userSlice.ts";
 import {useNavigate} from "react-router-dom";
 
 export function FormSignIn() {
-
-    const User = useSelector((u) => u.user)
 
     const [error, setError] = useState({
         username: null,
@@ -42,17 +40,22 @@ export function FormSignIn() {
     }
 
     const save = (token: string) => {
-        dispatch(userLogIn({
-            token: token
-        }))
-        navigate("/")
+        api("profile", token, "POST", null)
+            .then((data) => {dispatch(userLogIn({
+                token: token,
+                firstName: data.body.firstName,
+                lastName: data.body.lastName
+            }))
+                navigate("/profile")
+            })
+            .catch(error => console.log(error))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault()
         const data = new FormData(e.currentTarget)
-        const username = data.get("Username").toString()
-        const password = data.get("Password").toString()
+        const username = data.get("Username")!.toString()
+        const password = data.get("Password")!.toString()
         if (isValidData(username) && isValidData(password)) {
             const user = {
                 email: username,
