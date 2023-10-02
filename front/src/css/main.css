@@ -75,6 +75,11 @@ body {
   width: 200px;
 }
 
+.main-nav div div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .hero {
   background-image: url('../img/bank-tree.jpeg');
   background-position: 0 -50px;
@@ -273,6 +278,7 @@ body {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .editName-container-input input {
