@@ -15,15 +15,17 @@ export function FormSignIn() {
         global: null
     })
 
+    console.log(error)
+
     const dispatch = useDispatch()
 
     const navigate = useNavigate();
 
-    const isValidData = (data: string) => {
+    const isValidData = (data: string, type: "username" | "password") => {
         if (data.trim() === "") {
             setError(prevError => ({
                 ...prevError,
-                [data]: data === "username"
+                [type]: type === "username"
                     ? "Vous avez oublié de saisir username"
                     : "Vous avez oublié de saisir le mot de passe"
             }))
@@ -32,7 +34,7 @@ export function FormSignIn() {
 
         setError(prevError => ({
             ...prevError,
-            [data]: data === "username"
+            [type]: type === "username"
                 ? null
                 : null
         }))
@@ -56,7 +58,8 @@ export function FormSignIn() {
         const data = new FormData(e.currentTarget)
         const username = data.get("Username")!.toString()
         const password = data.get("Password")!.toString()
-        if (isValidData(username) && isValidData(password)) {
+        const isValid = [isValidData(username, "username"), isValidData(password, "password")].every(Boolean)
+        if (isValid) {
             const user = {
                 email: username,
                 password: password

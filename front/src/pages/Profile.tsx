@@ -25,7 +25,7 @@ export function Profile() {
     } else {
         const navigate = useNavigate()
         useEffect(() => {
-            navigate("/")
+            navigate("/login")
         }, []);
 
     }
