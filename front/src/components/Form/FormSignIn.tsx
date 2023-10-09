@@ -14,9 +14,7 @@ export function FormSignIn() {
         password: null,
         global: null
     })
-
-    console.log(error)
-
+    
     const dispatch = useDispatch()
 
     const navigate = useNavigate();
