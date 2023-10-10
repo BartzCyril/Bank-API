@@ -6,7 +6,6 @@ import {useEffect} from "react";
 export function Logout() {
     const dispatch = useDispatch()
     const navigate = useNavigate();
-
     useEffect(() => {
         dispatch(userLogOut())
         navigate("/")

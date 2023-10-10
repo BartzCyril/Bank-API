@@ -14,10 +14,14 @@ export function FormSignIn() {
         password: null,
         global: null
     })
-    
+
     const dispatch = useDispatch()
 
     const navigate = useNavigate();
+
+    const usernameLocalStorage = localStorage.getItem("username");
+    const passwordLocalStorage = localStorage.getItem("password")
+    const rememberMeLocalStorage = localStorage.getItem("rememberMe")
 
     const isValidData = (data: string, type: "username" | "password") => {
         if (data.trim() === "") {
@@ -56,8 +60,20 @@ export function FormSignIn() {
         const data = new FormData(e.currentTarget)
         const username = data.get("Username")!.toString()
         const password = data.get("Password")!.toString()
+        const rememberMe = data.get("Remember me")?.toString()
         const isValid = [isValidData(username, "username"), isValidData(password, "password")].every(Boolean)
         if (isValid) {
+            if (rememberMe === "on") {
+                localStorage.setItem("username", username);
+                localStorage.setItem("password", password);
+                localStorage.setItem("rememberMe", rememberMe);
+            } else {
+                if (usernameLocalStorage) {
+                    localStorage.removeItem("username");
+                    localStorage.removeItem("password");
+                    localStorage.removeItem("rememberMe");
+                }
+            }
             const user = {
                 email: username,
                 password: password
@@ -73,11 +89,11 @@ export function FormSignIn() {
             <i className="fa fa-user-circle sign-in-icon"></i>
             <h1>Sign In</h1>
             <form onSubmit={handleSubmit}>
-                <Input type="text" name="Username" placeholder="Write your name ..."/>
+                <Input type="text" name="Username" placeholder="Write your name ..." defaultValue={usernameLocalStorage ? usernameLocalStorage : ""}/>
                 {error.username ? <Error message={error.username}/> : ""}
-                <Input type="password" name="Password" placeholder="Write your password ..."/>
+                <Input type="password" name="Password" placeholder="Write your password ..." defaultValue={passwordLocalStorage ? passwordLocalStorage : ""}/>
                 {error.password ? <Error message={error.password}/> : ""}
-                <Checkbox name="Remember me"/>
+                <Checkbox name="Remember me" defaultValue={rememberMeLocalStorage === "on" ? true : false}/>
                 <button className="sign-in-button">Sign In</button>
             </form>
             {error.global ? <Error message={error.global}/> : ""}
