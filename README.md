@@ -1,4 +1,10 @@
-# Project #10 - Argent Bank API
+# Argent Bank API
+
+## Sujet
+
+Phase 1 : Création d'une application web réactive en React pour Argent Bank, permettant la gestion des comptes et des profils utilisateurs. Utilisation de Redux pour la gestion de l'état.
+
+Phase 2 : Conception des endpoints d'API pour les transactions, avec spécifications détaillées selon Swagger.
 
 This codebase contains the code needed to run the frontend and the backend for Argent Bank.
 
