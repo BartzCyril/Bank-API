@@ -1,4 +1,4 @@
-# Argent Bank API
+# Argent Bank
 
 ## Sujet
 
