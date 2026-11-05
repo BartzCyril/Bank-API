@@ -1,15 +1,70 @@
-# Argent Bank
+# Argent Bank — application bancaire React / Redux
+
+> Application web d'une banque en ligne : authentification, espace client et modification du profil avec React et Redux Toolkit, puis conception de l'API des transactions documentée avec Swagger.
+
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
+![Redux](https://img.shields.io/badge/Redux_Toolkit-764ABC?logo=redux&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=black)
 
 ## Sujet
 
-Phase 1 : Création d'une application web réactive en React pour Argent Bank, permettant la gestion des comptes et des profils utilisateurs. Utilisation de Redux pour la gestion de l'état.
+Projet de formation OpenClassrooms, en deux phases :
 
-Phase 2 : Conception des endpoints d'API pour les transactions, avec spécifications détaillées selon Swagger.
+1. **Authentification des utilisateurs** : développer le front-end React de l'application et le brancher sur l'API back-end fournie (Node.js, Express, MongoDB)
+2. **Transactions** : proposer les endpoints de l'API pour consulter et gérer les transactions, sous forme de spécification Swagger
+
+## Fonctionnalités
+
+- Page d'accueil
+- **Connexion** avec token JWT, case « Se souvenir de moi »
+- **Page profil** affichant les comptes de l'utilisateur
+- **Modification du prénom et du nom**, enregistrée via l'API
+- Déconnexion et protection des pages réservées aux utilisateurs connectés
+
+## Phase 2 : API des transactions
+
+La spécification [swagger2.yaml](swagger2.yaml) décrit les endpoints proposés :
+
+| Méthode | Endpoint | Action |
+| --- | --- | --- |
+| `GET` | `/transactions` | Lister les transactions du mois en cours, groupées par compte |
+| `GET` | `/transactions/{transactionId}` | Détail d'une transaction |
+| `POST` | `/transactions/{transactionId}` | Ajouter des informations à une transaction (catégorie, note) |
+| `PUT` | `/transactions/{transactionId}` | Modifier une information |
+| `DELETE` | `/transactions/{transactionId}` | Supprimer une information |
 
 ## Compétences acquises
 
-Ce projet m'a permis de développer mes compétences en React en créant une application web réactive pour Argent Bank. J'ai acquis de l'expérience dans la gestion des comptes et des profils utilisateurs tout en utilisant Redux pour maintenir un état cohérent de l'application.
+- **Redux Toolkit** : store global, slice utilisateur, actions et reducers
+- **React + TypeScript** avec React Router (routes protégées)
+- **Appels API authentifiés** avec un token JWT
+- **Conception d'API REST** : choix des routes, des méthodes HTTP, des paramètres et des codes de réponse
+- **Documentation d'API** avec Swagger / OpenAPI
+- Suivi du travail à partir d'issues GitHub (modèles dans `.github/ISSUE_TEMPLATE`)
 
-Dans la phase 2, j'ai conçu des endpoints d'API pour les transactions, en suivant des spécifications détaillées conformes à Swagger. Cette étape m'a permis de comprendre et d'appliquer les principes de conception d'API RESTful et d'approfondir mes connaissances en documentation API.
+## Lancer le projet en local
 
-Ce projet a renforcé ma compréhension de la construction d'applications web réactives avec React et de la mise en œuvre de services back-end pour prendre en charge des fonctionnalités spécifiques.
+Prérequis : Node.js et une instance MongoDB locale.
+
+### API
+
+```bash
+npm install
+npm run dev:server      # http://localhost:3001
+npm run populate-db     # crée les utilisateurs de test
+```
+
+Documentation de l'API : http://localhost:3001/api-docs
+
+### Front
+
+```bash
+cd front
+npm install
+npm run dev
+```
+
+Utilisateurs de test : `tony@stark.com` / `password123` et `steve@rogers.com` / `password456`.
