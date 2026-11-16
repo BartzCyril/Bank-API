@@ -1,13 +1,11 @@
-const mongoose = require('mongoose')
-const databaseUrl =
-  process.env.DATABASE_URL || 'mongodb://localhost/argentBankDB'
+const mysql = require('mysql2/promise')
 
-module.exports = async () => {
-  try {
-    await mongoose.connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-    console.log('Database successfully connected')
-  } catch (error) {
-    console.error(`Database Connectivity Error: ${error}`)
-    throw new Error(error)
-  }
-}
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  connectionLimit: 10
+})
+
+module.exports = pool

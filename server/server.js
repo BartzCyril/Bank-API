@@ -1,18 +1,19 @@
 const express = require('express')
 const dotEnv = require('dotenv')
+dotEnv.config()
 const cors = require('cors')
 const swaggerUi = require('swagger-ui-express')
 const yaml = require('yamljs')
 const swaggerDocs = yaml.load('./swagger.yaml')
-const dbConnection = require('./database/connection')
-
-dotEnv.config()
+const db = require('./database/connection')
 
 const app = express()
 const PORT = process.env.PORT || 3001
 
 // Connect to the database
-dbConnection()
+db.query('SELECT 1')
+  .then(() => console.log('Database successfully connected'))
+  .catch(error => console.error(`Database Connectivity Error: ${error}`))
 
 // Handle CORS issues
 app.use(cors())
