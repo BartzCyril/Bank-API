@@ -2,6 +2,8 @@
 
 > Application web d'une banque en ligne : authentification, espace client et modification du profil avec React et Redux Toolkit, puis conception de l'API des transactions documentée avec Swagger.
 
+🔗 **Démo en ligne** : [https://bank-api.qota7916.odns.fr](https://bank-api.qota7916.odns.fr) (comptes de test : voir plus bas)
+
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 ![Redux](https://img.shields.io/badge/Redux_Toolkit-764ABC?logo=redux&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
