@@ -1,6 +1,7 @@
 const express = require('express')
 const dotEnv = require('dotenv')
 dotEnv.config()
+if (!process.env.SECRET_KEY) throw new Error('SECRET_KEY must be set')
 const cors = require('cors')
 const swaggerUi = require('swagger-ui-express')
 const yaml = require('yamljs')

@@ -28,7 +28,7 @@ module.exports.createUser = async serviceData => {
 module.exports.getUserProfile = async serviceData => {
   try {
     const jwtToken = serviceData.headers.authorization.split('Bearer')[1].trim()
-    const decodedJwtToken = jwt.decode(jwtToken)
+    const decodedJwtToken = jwt.verify(jwtToken, process.env.SECRET_KEY)
     const user = await User.findById(decodedJwtToken.id)
 
     if (!user) {
@@ -58,7 +58,7 @@ module.exports.loginUser = async serviceData => {
 
     const token = jwt.sign(
       { id: user.id },
-      process.env.SECRET_KEY || 'default-secret-key',
+      process.env.SECRET_KEY,
       { expiresIn: '1d' }
     )
 
@@ -72,7 +72,7 @@ module.exports.loginUser = async serviceData => {
 module.exports.updateUserProfile = async serviceData => {
   try {
     const jwtToken = serviceData.headers.authorization.split('Bearer')[1].trim()
-    const decodedJwtToken = jwt.decode(jwtToken)
+    const decodedJwtToken = jwt.verify(jwtToken, process.env.SECRET_KEY)
     const user = await User.updateNames(
       decodedJwtToken.id,
       serviceData.body.firstName,
